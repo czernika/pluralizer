@@ -1,5 +1,7 @@
 # Pluralizer
 
+[![Run tests](https://github.com/czernika/pluralizer/actions/workflows/tests.yml/badge.svg)](https://github.com/czernika/pluralizer/actions/workflows/tests.yml)
+
 TODO
 
 ## Examples
