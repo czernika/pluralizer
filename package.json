@@ -1,11 +1,12 @@
 {
-  "name": "pluralizer",
+  "name": "pluralizer-ru",
   "description": "Pluralize words depends on amount of items",
   "keywords": [
     "pluralizer"
   ],
   "license": "MIT",
   "version": "0.1.0",
+  "main": "./dist/pluralizer.js",
   "module": "./dist/pluralizer.js",
   "types": "./dist/index.d.ts",
   "type": "module",
