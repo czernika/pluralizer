@@ -6,6 +6,12 @@ Yet another pluralization library but this time primarly in Russian 🇷🇺
 
 > PRs are welcome to add another languages
 
+## Installation
+
+```sh
+npm install pluralizer-ru
+```
+
 ## Examples
 
 ```js
