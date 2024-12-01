@@ -34,10 +34,12 @@ pluralizeRu(items.length, {
 
 Second argument is pluralization object which accepts 3-4 keys for:
 
-`single` - `val % 10 === 1 && val % 100 !== 11`
-`some` - `val % 10 >= 2 && val % 10 <= 4 && (val % 100 < 10 || val % 100 >= 20)`
-`many` - other cases but 0
-`none` - (optional) - `n === 0`. If was not passed 0 value will be pluralized as `many`
+| Key    | Condition, val = total items                                                   |
+|--------|--------------------------------------------------------------------------------|
+| single | `val % 10 === 1 && val % 100 !== 11`                                           |
+| some   | `val % 10 >= 2 && val % 10 <= 4 && (val % 100 < 10 || val % 100 >= 20)`        |
+| many   | other cases but 0                                                              |
+| none   | (optional) - `n === 0`. If was not passed 0 value will be pluralized as `many` |
 
 ```js
 pluralizeRu(0, {
