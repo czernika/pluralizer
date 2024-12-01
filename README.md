@@ -14,53 +14,70 @@ npm install pluralizer-ru
 
 ## Examples
 
+Import language-based function from module as
+
 ```js
 import { pluralizeRu } from 'pluralizer-ru'
+```
 
-// No key for 0 items (by default it will take the key value for many)
-const options = {
-    single: 'яблоко',
-    some: 'яблока',
-    many: 'яблок',
-}
-pluralizeRu(0, options) // '0 яблок'
-pluralizeRu(1, options) // '1 яблоко'
-pluralizeRu(2, options) // '2 яблока'
-pluralizeRu(11, options) // '11 яблок'
-pluralizeRu(33, options) // '11 яблока'
-pluralizeRu(50, options) // '50 яблок'
-pluralizeRu(51, options) // '51 яблоко'
-pluralizeRu(1022, options) // '1022 яблока'
+### Basic usage
 
-// With "0" key
-const options = {
-    single: 'яблоко',
-    some: 'яблока',
-    many: 'яблок',
-    none: 'яблочищ', // zero items
-}
+Pass amount of items and pluralization options as a second argument
 
-pluralizeRu(0, options) // '0 яблочищ'
+```js
+pluralizeRu(items.length, {
+    single: 'результат',
+    some: 'результата',
+    many: 'результатов',
+})
+```
 
-// Custom 0 value
-const options = {
-    single: 'яблоко',
-    some: 'яблока',
-    many: 'яблок',
-    none: 'яблок',
-}
+Second argument is pluralization object which accepts 3-4 keys for:
 
-pluralizeRu(0, options, 'Нет') // 'Нет яблок'
+`single` - `val % 10 === 1 && val % 100 !== 11`
+`some` - `val % 10 >= 2 && val % 10 <= 4 && (val % 100 < 10 || val % 100 >= 20)`
+`many` - other cases but 0
+`none` - (optional) - `n === 0`. If was not passed 0 value will be pluralized as `many`
 
-// Do not output value
-const options = {
-    single: 'яблоко',
-    some: 'яблока',
-    many: 'яблок',
-    none: 'яблок',
-}
+```js
+pluralizeRu(0, {
+    single: 'результат',
+    some: 'результата',
+    many: 'результатов',
+}) // 0 результатов
 
-pluralizeRu(0, options, 0, false) // 'яблок' // do not show amount of items
+pluralizeRu(0, {
+    single: 'результат',
+    some: 'результата',
+    many: 'результатов',
+    none: '(ничего)',
+}) // 0 (ничего)
+```
+
+### Show other placeholder than 0
+
+Sometimes you need to show something but 0 for no results, e.g. "No results". Pass its value as 3rd argument
+
+```js
+pluralizeRu(0, {
+    single: 'результат',
+    some: 'результата',
+    many: 'результатов',
+    none: 'ничего',
+}, 'Нет') // Нет ничего
+```
+
+### Do not show values
+
+If your design requires to put value and title on different sites, e.g statistics cards, set `false` as 4th argument
+
+```js
+pluralizeRu(0, {
+    single: 'результат',
+    some: 'результата',
+    many: 'результатов',
+    none: 'ничего',
+}, 0, false) // ничего
 ```
 
 ## License
